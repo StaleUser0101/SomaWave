@@ -1,0 +1,5 @@
+include LICENSE THIRD_PARTY_NOTICES.md
+include CHANGELOG.md CONTRIBUTING.md SECURITY.md
+include assets/somawave.svg
+include scripts/*.sh
+include docs/screenshots/*.png docs/screenshots/README.md

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "somawave"
+version = "1.0.1"
+description = "Independent radio. Terminal style."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+requires-python = ">=3.11"
+dependencies = ["textual>=8.2.8,<9"]
+
+[project.urls]
+Repository = "https://github.com/StaleUser0101/SomaWave"
+Issues = "https://github.com/StaleUser0101/SomaWave/issues"
+
+[project.scripts]
+somawave = "somawave.__main__:main"
+
+[tool.setuptools]
+packages = ["somawave"]
+
+[tool.setuptools.package-data]
+somawave = ["styles.tcss"]
