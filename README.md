@@ -4,6 +4,8 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 ![Platform: Linux](https://img.shields.io/badge/platform-Linux-333333)
+[![Latest release](https://img.shields.io/github/v/release/StaleUser0101/SomaWave)](https://github.com/StaleUser0101/SomaWave/releases/latest)
+[![CI](https://github.com/StaleUser0101/SomaWave/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/StaleUser0101/SomaWave/actions/workflows/ci.yml)
 
 Independent radio. Terminal style.
 
@@ -32,47 +34,19 @@ The Settings screenshot shows v1.0.0. The dialog has the same layout in v1.0.1.
 
 ## System requirements
 
-SomaWave was tested on Arch Linux with Omarchy and Foot. Other Linux desktops are expected to work with the dependencies below, but have not been verified.
+The native Arch package was manually tested for installation and playback on Omarchy and CachyOS.
 
-- Python 3.11 or newer with `venv` and `ensurepip`
-- Textual 8.2.8 or newer in the 8.x series, installed in a virtual environment
+- Python 3.11 or newer. The standalone installer also needs `venv` and `ensurepip`.
+- Textual 8.2.8 or newer in the 8.x series
 - MPV with JSON IPC and a working audio output
 - A terminal emulator compatible with Textual
 - Internet access to SomaFM for live streams and directory updates
 
-## Install and launch
-
-From the extracted Linux archive or a checkout of this repository, run the installer.
-
-```bash
-./scripts/install.sh
-```
-
-The installer checks for Python and MPV, creates or reuses a dedicated Python virtual environment, and installs Textual and its Python dependencies there. It also installs the original SVG icon and a desktop launcher. Installation runs as your regular user.
-
-Open **SomaWave** from your app menu or run `~/.local/bin/somawave` in your existing terminal. Use `somawave` when `~/.local/bin` is on your PATH.
-
-On Omarchy, the app menu uses Omarchy's native TUI launcher, or its terminal launcher on older installations. Omarchy resolves the default terminal when you open SomaWave. On other desktops, the launcher uses `xdg-terminal-exec` when available or lets the desktop environment choose the terminal.
-
-### Distribution downloads
-
-Release assets will appear on the [v1.0.1 release page](https://github.com/StaleUser0101/SomaWave/releases/tag/v1.0.1) after publication. Download `SomaWave-1.0.1-linux.tar.gz` and `SHA256SUMS` to the same directory. Verify the archive before extracting and installing it.
-
-```bash
-sha256sum -c --ignore-missing SHA256SUMS
-tar -xzf SomaWave-1.0.1-linux.tar.gz
-cd SomaWave-1.0.1
-./scripts/install.sh
-```
-
-The archive installs without a Git checkout. [All releases](https://github.com/StaleUser0101/SomaWave/releases)
-
-For an existing Python virtual environment, install the downloaded `.whl` with that environment’s `python -m pip install /path/to/wheel.whl` and run `somawave` there. Use the Linux archive for the desktop launcher and icon.
-
 ## Native Arch Linux package
 
-Use the native package on a fully up-to-date Arch-based system. In the directory
-containing the package and its checksum manifest, run:
+The native package is recommended for Omarchy and CachyOS. On a fully
+up-to-date system, download [`somawave-1.0.1-1-any.pkg.tar.zst`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/somawave-1.0.1-1-any.pkg.tar.zst)
+and [`SHA256SUMS-arch`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SHA256SUMS-arch) to the same directory and run:
 
 ```bash
 sha256sum -c SHA256SUMS-arch
@@ -84,8 +58,9 @@ Pacman resolves Bash, GLib, the hicolor icon theme, MPV, Python 3.11 or newer, R
 `python-textual` from 8.2.8 up to (but excluding) 9. The desktop launcher
 prefers Omarchy's terminal dispatcher when present, then `xdg-terminal-exec`,
 then GLib's terminal selection. The app can also start directly in any
-Textual-compatible terminal. After a Python minor-version upgrade, use a native
-package rebuilt against that Python version.
+Textual-compatible terminal. The v1.0.1 native package was built for Python
+3.14. After a Python minor-version upgrade, use a native package rebuilt
+against the new version.
 
 Upgrade by verifying and installing the newer package with `pacman -U`. To
 remove the app, run `sudo pacman -R somawave`. Upgrades and removal preserve
@@ -109,6 +84,35 @@ See [packaging/arch](packaging/arch/) for building future releases.
    the system command.
 4. Open a new shell and run `command -v somawave` to confirm it resolves to
    `/usr/bin/somawave`. Reopen the app menu to pick up the system entry.
+
+## General Linux installation
+
+From the extracted Linux archive or a checkout of this repository, run the installer.
+
+```bash
+./scripts/install.sh
+```
+
+The installer checks for Python and MPV, creates or reuses a dedicated Python virtual environment, and installs Textual and its Python dependencies there. It also installs the original SVG icon and a desktop launcher. Installation runs as your regular user.
+
+Open **SomaWave** from your app menu or run `~/.local/bin/somawave` in your existing terminal. Use `somawave` when `~/.local/bin` is on your PATH.
+
+On Omarchy, the app menu uses Omarchy's native TUI launcher, or its terminal launcher on older installations. Omarchy resolves the default terminal when you open SomaWave. On other desktops, the launcher uses `xdg-terminal-exec` when available or lets the desktop environment choose the terminal.
+
+### Distribution downloads
+
+Download the [Linux archive](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SomaWave-1.0.1-linux.tar.gz) and [SHA256SUMS](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SHA256SUMS) to the same directory. Verify the archive before extracting and installing it.
+
+```bash
+sha256sum -c --ignore-missing SHA256SUMS
+tar -xzf SomaWave-1.0.1-linux.tar.gz
+cd SomaWave-1.0.1
+./scripts/install.sh
+```
+
+The archive installs without a Git checkout. [All releases](https://github.com/StaleUser0101/SomaWave/releases)
+
+For an existing Python virtual environment, install the downloaded `.whl` with that environment’s `python -m pip install /path/to/wheel.whl` and run `somawave` there. Use the Linux archive for the desktop launcher and icon.
 
 ## Standalone upgrade and uninstall
 
