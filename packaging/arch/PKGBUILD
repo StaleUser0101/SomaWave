@@ -1,0 +1,39 @@
+# Maintainer: StaleUser0101
+pkgname=somawave
+pkgver=1.0.1
+pkgrel=1
+pkgdesc='Terminal player for SomaFM with live spectrum and metadata'
+arch=('any')
+url='https://github.com/StaleUser0101/SomaWave'
+license=('MIT')
+depends=('bash' 'glib2' 'hicolor-icon-theme' 'mpv' 'python>=3.11' 'python-rich' 'python-textual>=8.2.8' 'python-textual<9')
+makedepends=('python-build' 'python-installer' 'python-setuptools>=1:77.0.3' 'python-wheel')
+optdepends=('xdg-terminal-exec: use the configured default terminal when available')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        'somawave.desktop'
+        'somawave-terminal.desktop'
+        'somawave-launch')
+sha256sums=('804f11ced48e9688dc25567a3c2c77cf9d480c30d3a056c2fee24c3147b61592'
+            '5b7d2e0911bf7927b5e846bedc6d3470494e2a6e0d00548e7f5d25af62efb3ad'
+            '87b11116ef0942f1494674be898db657db6891dc17665719bf7d6b173a1a052e'
+            '371a0e05140de4174d1c253c45edbf730216c77657149a35977987250d5822c5')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    python -m unittest discover -s tests -v
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm755 "$srcdir/somawave-launch" "$pkgdir/usr/lib/$pkgname/somawave-launch"
+    install -Dm644 "$srcdir/somawave.desktop" "$pkgdir/usr/share/applications/somawave.desktop"
+    install -Dm644 "$srcdir/somawave-terminal.desktop" "$pkgdir/usr/share/$pkgname/somawave-terminal.desktop"
+    install -Dm644 assets/somawave.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/somawave.svg"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE THIRD_PARTY_NOTICES.md
+}

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if command -v omarchy-launch-tui >/dev/null 2>&1; then
+    exec omarchy-launch-tui --app-id=somawave /usr/bin/somawave
+elif command -v omarchy-launch-terminal >/dev/null 2>&1; then
+    exec omarchy-launch-terminal /usr/bin/somawave
+elif command -v xdg-terminal-exec >/dev/null 2>&1; then
+    exec xdg-terminal-exec /usr/bin/somawave
+fi
+
+exec /usr/bin/gio launch /usr/share/somawave/somawave-terminal.desktop

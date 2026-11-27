@@ -69,7 +69,48 @@ The archive installs without a Git checkout. [All releases](https://github.com/S
 
 For an existing Python virtual environment, install the downloaded `.whl` with that environment’s `python -m pip install /path/to/wheel.whl` and run `somawave` there. Use the Linux archive for the desktop launcher and icon.
 
-## Upgrade and uninstall
+## Native Arch Linux package
+
+Use the native package on a fully up-to-date Arch-based system. In the directory
+containing the package and its checksum manifest, run:
+
+```bash
+sha256sum -c SHA256SUMS-arch
+sudo pacman -U ./somawave-1.0.1-1-any.pkg.tar.zst
+/usr/bin/somawave
+```
+
+Pacman resolves Bash, GLib, the hicolor icon theme, MPV, Python 3.11 or newer, Rich, and
+`python-textual` from 8.2.8 up to (but excluding) 9. The desktop launcher
+prefers Omarchy's terminal dispatcher when present, then `xdg-terminal-exec`,
+then GLib's terminal selection. The app can also start directly in any
+Textual-compatible terminal. After a Python minor-version upgrade, use a native
+package rebuilt against that Python version.
+
+Upgrade by verifying and installing the newer package with `pacman -U`. To
+remove the app, run `sudo pacman -R somawave`. Upgrades and removal preserve
+the XDG settings and cache, including favorites and recently played stations.
+See [packaging/arch](packaging/arch/) for building future releases.
+
+### Migrate from the standalone installer
+
+1. Quit SomaWave. Keep the same absolute XDG configuration and cache paths so
+   both installations read the same settings and station cache.
+2. Install the native package and run `/usr/bin/somawave` to verify your
+   preferences. Your existing `~/.local/bin/somawave` can take precedence on
+   PATH, and the user-local desktop entry and icon can override the system
+   entries.
+3. When ready to switch, run `./scripts/uninstall.sh` from the standalone
+   release as your regular user, using the same `XDG_DATA_HOME` used during
+   standalone installation. It removes the standalone wrapper, desktop
+   entry, icon, and dedicated virtual environment while preserving settings
+   and cache. Keep the standalone archive if you want to reinstall it later.
+   For an independently managed virtual environment, deactivate it when using
+   the system command.
+4. Open a new shell and run `command -v somawave` to confirm it resolves to
+   `/usr/bin/somawave`. Reopen the app menu to pick up the system entry.
+
+## Standalone upgrade and uninstall
 
 Quit SomaWave, extract the new release or check out its source in your repository, and rerun `./scripts/install.sh` with the same XDG environment used for installation. The existing settings and station cache carry over, including favorites and recent history.
 

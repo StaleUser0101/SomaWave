@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=SomaWave
+Exec=/usr/bin/somawave
+Terminal=true

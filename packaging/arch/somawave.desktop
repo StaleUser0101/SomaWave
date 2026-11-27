@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SomaWave
+Comment=Independent radio. Terminal style.
+Exec=/usr/lib/somawave/somawave-launch
+Icon=somawave
+Terminal=false
+Categories=AudioVideo;Audio;Player;
