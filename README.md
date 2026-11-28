@@ -13,6 +13,39 @@ SomaWave is an independent, unofficial Linux terminal player for SomaFM.
 
 [![SomaWave playing Groove Salad with the spectrum analyzer in a dark theme](docs/screenshots/dark-theme.png)](docs/screenshots/dark-theme.png)
 
+## Quick Install
+
+Run this command as your regular user from an interactive terminal.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/StaleUser0101/SomaWave/main/install.sh | bash
+```
+
+The installer selects the latest stable release and verifies the published SHA-256
+checksum before installing. It uses Pacman on Arch and compatible derivatives,
+including Omarchy and CachyOS, and the per-user standalone installer on other
+Linux distributions that meet the system requirements. If you have a standalone
+installation on an Arch-based system, the installer asks before migrating it.
+Settings, favorites, and listening history carry over when you keep the same XDG
+paths.
+
+Run the same command again to check for and install an available update. The
+installer exits successfully when the selected installation is already current.
+Quick Install needs Bash, curl, Python 3.11 or newer, and standard Linux utilities
+including `sha256sum`. Native installation also needs Pacman, `bsdtar`, and sudo
+privileges. Keep your Arch system fully updated and use a package built for the
+system Python minor version. Standalone installation also needs MPV and Python's
+`venv` and `ensurepip`.
+
+To inspect the installer before running it, download it to a directory you control,
+read it, and run it if you are satisfied with its contents.
+
+```bash
+curl -fsSLo somawave-install.sh https://raw.githubusercontent.com/StaleUser0101/SomaWave/main/install.sh
+less somawave-install.sh
+bash somawave-install.sh
+```
+
 ## Features
 
 - Browse and filter the live station directory, save favorites, and revisit recently played stations.
