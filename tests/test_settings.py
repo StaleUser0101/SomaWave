@@ -73,7 +73,7 @@ class SettingsTests(unittest.IsolatedAsyncioTestCase):
                 await pilot.press("o")
                 save.assert_not_called()
             self.assertIsInstance(app.screen, SettingsScreen)
-            self.assertEqual(app.screen.query_one("#settings-version").content, "SomaWave 1.0.1")
+            self.assertEqual(app.screen.query_one("#settings-version").content, "SomaWave 1.0.2")
             started = app.player.started
             await pilot.press("n", "s", "p", "f", "q", "m", "=")
             self.assertEqual(app.player.started, started)

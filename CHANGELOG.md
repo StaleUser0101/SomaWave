@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Restore live Artist and Track updates by retaining a small MPV demuxer back buffer for ICY metadata.
+- Prefer separate artist and title tags when the stream also supplies a combined ICY title.
+
 ## 1.0.1
 
 - License SomaWave under MIT and include the license and third-party notices in distribution packages.

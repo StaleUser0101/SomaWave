@@ -263,7 +263,7 @@ class PlayerTests(unittest.IsolatedAsyncioTestCase):
                         session = player._session
                         self.assertTrue(await ipc.command("get_property", "af"))
                         self.assertEqual(await ipc.command(
-                            "get_property", "options/demuxer-max-back-bytes"), 0)
+                            "get_property", "options/demuxer-max-back-bytes"), 1024 * 1024)
                         player.volume = 35
                         player.muted = True
                         async with asyncio.timeout(2):

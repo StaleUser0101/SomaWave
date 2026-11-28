@@ -31,7 +31,7 @@ def track_metadata(metadata):
             if isinstance(key, str) and isinstance(value, str)}
     artist, title = tags.get("artist", ""), tags.get("title", "")
     stream = tags.get("icy-title", "")
-    if not stream:
+    if not stream or (artist and title):
         return artist, title, ""
 
     # Split ICY's conventional "Artist - Track" pair once, so a track may contain a dash.
@@ -39,7 +39,7 @@ def track_metadata(metadata):
     if separator and stream_artist and track and (
         not artist or artist.casefold() == stream_artist.casefold()
     ):
-        return artist or stream_artist, track, ""
+        return artist or stream_artist, title or track, ""
     return artist, title, stream if stream != title else ""
 
 
@@ -182,8 +182,9 @@ class Player:
             spawn = asyncio.create_task(asyncio.create_subprocess_exec(
                 "mpv", "--no-config", "--no-video", "--no-terminal", "--idle=no",
                 "--audio-display=no", "--network-timeout=10", "--cache=yes",
-                # Live radio has no rewind control. Keep only the forward buffer.
-                "--demuxer-max-back-bytes=0",
+                # MPV needs a back buffer to expose timed ICY metadata.
+                "--demuxer-max-back-bytes=1MiB",
+                "--no-demuxer-donate-buffer",
                 "--volume-max=100", f"--volume={self.volume}", f"--mute={'yes' if self.muted else 'no'}",
                 f"--pause={'yes' if self.paused else 'no'}", f"--input-ipc-server={socket}",
                 f"--playlist={url}", stdin=asyncio.subprocess.DEVNULL,
