@@ -30,7 +30,7 @@ Settings cover stream quality, startup autoplay, reconnection, and spectrum disp
 
 [![SomaWave Settings dialog](docs/screenshots/settings.png)](docs/screenshots/settings.png)
 
-The Settings screenshot shows v1.0.0. The dialog has the same layout in v1.0.1.
+The Settings screenshot shows v1.0.0. The dialog has the same layout in v1.0.2.
 
 ## System requirements
 
@@ -45,12 +45,12 @@ The native Arch package was manually tested for installation and playback on Oma
 ## Native Arch Linux package
 
 The native package is recommended for Omarchy and CachyOS. On a fully
-up-to-date system, download [`somawave-1.0.1-1-any.pkg.tar.zst`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/somawave-1.0.1-1-any.pkg.tar.zst)
-and [`SHA256SUMS-arch`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SHA256SUMS-arch) to the same directory and run:
+up-to-date system, download [`somawave-1.0.2-1-any.pkg.tar.zst`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.2/somawave-1.0.2-1-any.pkg.tar.zst)
+and [`SHA256SUMS-arch`](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.2/SHA256SUMS-arch) to the same directory and run:
 
 ```bash
 sha256sum -c SHA256SUMS-arch
-sudo pacman -U ./somawave-1.0.1-1-any.pkg.tar.zst
+sudo pacman -U ./somawave-1.0.2-1-any.pkg.tar.zst
 /usr/bin/somawave
 ```
 
@@ -58,7 +58,7 @@ Pacman resolves Bash, GLib, the hicolor icon theme, MPV, Python 3.11 or newer, R
 `python-textual` from 8.2.8 up to (but excluding) 9. The desktop launcher
 prefers Omarchy's terminal dispatcher when present, then `xdg-terminal-exec`,
 then GLib's terminal selection. The app can also start directly in any
-Textual-compatible terminal. The v1.0.1 native package was built for Python
+Textual-compatible terminal. The v1.0.2 native package was built for Python
 3.14. After a Python minor-version upgrade, use a native package rebuilt
 against the new version.
 
@@ -101,12 +101,12 @@ On Omarchy, the app menu uses Omarchy's native TUI launcher, or its terminal lau
 
 ### Distribution downloads
 
-Download the [Linux archive](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SomaWave-1.0.1-linux.tar.gz) and [SHA256SUMS](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.1/SHA256SUMS) to the same directory. Verify the archive before extracting and installing it.
+Download the [Linux archive](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.2/SomaWave-1.0.2-linux.tar.gz) and [SHA256SUMS](https://github.com/StaleUser0101/SomaWave/releases/download/v1.0.2/SHA256SUMS) to the same directory. Verify the archive before extracting and installing it.
 
 ```bash
 sha256sum -c --ignore-missing SHA256SUMS
-tar -xzf SomaWave-1.0.1-linux.tar.gz
-cd SomaWave-1.0.1
+tar -xzf SomaWave-1.0.2-linux.tar.gz
+cd SomaWave-1.0.2
 ./scripts/install.sh
 ```
 

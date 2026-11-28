@@ -2,7 +2,7 @@
 
 ## 1.0.2
 
-- Restore live Artist and Track updates by retaining a small MPV demuxer back buffer for ICY metadata.
+- Fix a regression introduced in v1.0.0 that left Artist and Track at Unknown during playback. Retain a small MPV demuxer back buffer so timed ICY metadata reaches the player.
 - Prefer separate artist and title tags when the stream also supplies a combined ICY title.
 
 ## 1.0.1

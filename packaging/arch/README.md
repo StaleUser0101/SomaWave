@@ -31,7 +31,7 @@ Copy the validated package to the permanent release directory. From that
 directory:
 
 ```bash
-package=somawave-1.0.1-1-any.pkg.tar.zst  # Match the version just built.
+package=somawave-1.0.2-1-any.pkg.tar.zst  # Match the version just built.
 sha256sum "$package" > SHA256SUMS-arch
 sha256sum -c SHA256SUMS-arch
 ```

@@ -13,7 +13,7 @@ source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'somawave.desktop'
         'somawave-terminal.desktop'
         'somawave-launch')
-sha256sums=('cff5e91da58076cf4260c844c6aa5a097ffce273ff9987ed654876e13be79b3c'
+sha256sums=('f518086f005f0defcbfb67d309589a14a8a318f917cbd9e3ce0314b59dba8942'
             '5b7d2e0911bf7927b5e846bedc6d3470494e2a6e0d00548e7f5d25af62efb3ad'
             '87b11116ef0942f1494674be898db657db6891dc17665719bf7d6b173a1a052e'
             '371a0e05140de4174d1c253c45edbf730216c77657149a35977987250d5822c5')
